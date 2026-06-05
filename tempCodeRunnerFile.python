@@ -1,8 +1,46 @@
-def get_valid_guess():
-    "guess and ensures it is a valid integir"
-    while True:
-        try:
-            guess = int(input("Enter the guess:"))
-            return guess
-        except ValueError:
-            print("Invalid input please enter a whole number")
+def cinema_ticket_booking():
+    # 1. Greet the user
+    print("Welcome to the Local Cinema Ticketing System! 🎬")
+    print("------------------------------------------------")
+
+    # Base ticket prices
+    STANDARD_PRICE = 10
+    STUDENT_PRICE = 8
+
+    # 2. Ask how many tickets they want to buy
+    try:
+        num_tickets = int(input("How many tickets would you like to buy? "))
+        if num_tickets <= 0:
+            print("Please enter a valid number of tickets greater than 0.")
+            return
+    except ValueError:
+        print("Invalid input. Please enter a whole number.")
+        return
+
+    # 3. Ask if they are a student
+    student_status = input("Are you a student? (Yes/No): ").strip().lower()
+
+    # 4. Calculate the total price based on their input
+    if student_status in ['yes', 'y']:
+        ticket_price = STUDENT_PRICE
+        is_student = True
+    else:
+        ticket_price = STANDARD_PRICE
+        is_student = False
+
+    total_cost = num_tickets * ticket_price
+
+    # 5. Print a friendly receipt
+    print("\n------------------------------------------------")
+    print("               RECEIPT                          ")
+    print("------------------------------------------------")
+    print(f"Ticket Type:  {'Student ($8/each)' if is_student else 'Standard ($10/each)'}")
+    print(f"Quantity:     {num_tickets}")
+    print("------------------------------------------------")
+    print(f"TOTAL COST:   ${total_cost:.2f}")
+    print("------------------------------------------------")
+    print("Thank you for your purchase! Enjoy the movie! 🍿✨")
+
+# Run the program
+if __name__ == "__main__":
+    cinema_ticket_booking()
