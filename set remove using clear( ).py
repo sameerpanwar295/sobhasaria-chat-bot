@@ -1,4 +1,5 @@
 thisset = {"apple","mango","banana"}
 
-del thisset
+thisset.clear()
+
 print(thisset)
